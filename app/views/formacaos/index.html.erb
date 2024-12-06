@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Formacaos</h1>
+
+<div id="formacaos">
+  <% @formacaos.each do |formacao| %>
+    <%= render formacao %>
+    <p>
+      <%= link_to "Show this formacao", formacao %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New formacao", new_formacao_path %>

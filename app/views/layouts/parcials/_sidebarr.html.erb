@@ -1,0 +1,35 @@
+<div class="sidebar">
+    <%= image_tag('ipt.jpeg', alt: 'Logo', class: 'logo') %>
+    <nav>
+    
+      <ul>
+        <li><a href="<%= home_path %>">Home</a></li>
+
+        <li>
+          <a href="#">Estatis</a>
+          <ul>
+            <li><a href="<%= estatistica_path %>">Sala / Edificio</a></li>
+            <li><a href="#">Docente / Formação </a></li>
+            <li><a href="#">Evento / Sala </a></li>
+          </ul> 
+        </li>
+
+        <li>
+          <a href="#">User</a>
+          <ul>
+            <li><a href="<%= users_path %>">Pesquisar</a></li>
+            <li><a href="<%= new_user_path %>">Criar</a></li>
+            <li><a href="<%= listUsers_path %>">Listar</a></li>
+          </ul> 
+        </li>
+
+      </ul>
+
+    </nav>
+
+    <div class="icons">
+      <a href="<%= logout_path %>"><%= image_tag('but2.jpg', alt: 'Descrição da imagem') %></a>
+      <a href="<%= estatistica_path %>"><%= image_tag('set2.jpg', alt: 'Descrição da imagem') %></a>
+    </div>
+
+</div>

@@ -1,0 +1,21 @@
+<% if @edificios.present? && @quantidades.present? %>
+  <h1>Estatísticas de Salas por Edifício</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Edifício</th>
+        <th>Quantidade de Salas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @edificios.each_with_index do |edificio, index| %>
+        <tr>
+          <td><%= edificio %></td>
+          <td><%= @quantidades[index] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Não há dados disponíveis ou ocorreu um problema.</p>
+<% end %>

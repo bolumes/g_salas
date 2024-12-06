@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPT Gestão de Salas</title>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap', rel: 'stylesheet', media: 'all', integrity: true, crossorigin: 'anonymous' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag 'style02', media: 'all', 'data-turbo-track': 'reload' %>
+
+    <style>
+      /* Flexbox para ajustar layout */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 20px;
+      }
+
+      .form-image {
+        flex: 1;
+        text-align: center;
+        min-width: 300px;
+      }
+
+      .form-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid blue;
+      }
+
+      .form-container {
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .form-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+      }
+
+      .form-container input, .form-container button {
+        width: 95%; /* Reduzi a largura de 100% para 95% */
+        padding: 8px; /* Reduzi o padding de 10px para 8px */
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 0.9rem; /* Ajustei o tamanho da fonte para ser um pouco menor */
+      }
+
+      .form-container input:focus {
+        outline: none;
+        border-color: #388e3c;
+      }
+
+      .form-container button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        font-size: 0.9rem; /* Mantive consistente com os campos */
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .form-container button:hover {
+        background-color: #388e3c;
+      }
+
+      /* Responsividade */
+      @media screen and (max-width: 768px) {
+        .form-image {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+
+  <!-- Menu Lateral -->
+  <%= render 'layouts/parcials/sidebar' %>
+
+  <!-- Conteúdo Principal -->
+  <div class="main-content">~
+
+    <!-- Header -->
+    <%= render 'layouts/parcials/header' %>
+    
+  <section class="section">
+  <fieldset style="border-radius: 8px; border: 2px solid blue; padding: 20px; background-color: white; height: auto;">
+    <legend style="text-align: center;">
+      <h3 style="color: blue; margin: 0;">CONFIRMAR SUPRESSAO</h3>
+    </legend>
+    <div class="container">
+      <div class="form-image">
+        <%= image_tag 'imgipt.jpg', alt: 'Imagem do Formulário', style: 'max-width: 100%; height: auto; border-radius: 8px; border: 1px solid blue;' %>
+      </div>
+
+      <div class="form-container">
+
+      <p style="color: green"><%= notice %></p>
+
+      <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: center;">
+        <thead>
+          <tr bgcolor="#4caf50">
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Localização</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @edificio.id %></td>
+            <td><%= @edificio.nome %></td>
+            <td><%= @edificio.localiza %></td>
+            <td>
+              <%= link_to "Editar", edit_edificio_path(@edificio), class: "btn btn-link" %> |
+              <%= link_to "Voltar", listEdificios_path, class: "btn btn-link" %> |
+              <%= button_to "Deletar", @edificio, method: :delete, data: { confirm: "Tem certeza que deseja deletar este edifício?" }, class: "btn btn-link" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      </div>
+    </div>
+  </fieldset>
+</section>
+
+  
+</body>
+</html>
+
+<% if flash[:notice] %>
+  <script>
+    alert("<%= j flash[:notice] %>");
+  </script>
+<% end %>

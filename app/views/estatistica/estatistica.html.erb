@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPT Gestão de Salas</title>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap', rel: 'stylesheet', media: 'all', integrity: true, crossorigin: 'anonymous' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag 'style02', media: 'all', 'data-turbo-track': 'reload' %>
+
+  <style>
+    /* Flexbox para ajustar layout */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .form-image {
+      flex: 1;
+      text-align: center;
+      min-width: 300px;
+    }
+
+    .form-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid blue;
+    }
+
+    .form-container {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .form-container input, .form-container button {
+      width: 95%; /* Reduzi a largura de 100% para 95% */
+      padding: 8px; /* Reduzi o padding de 10px para 8px */
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 0.9rem; /* Ajustei o tamanho da fonte para ser um pouco menor */
+    }
+
+    .form-container input:focus {
+      outline: none;
+      border-color: #388e3c;
+    }
+
+    .form-container button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      font-size: 0.9rem; /* Mantive consistente com os campos */
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #388e3c;
+    }
+
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .form-image {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Menu Lateral -->
+  <%= render 'layouts/parcials/sidebarr' %>
+
+  <!-- Conteúdo Principal -->
+  <div class="main-content">~
+
+    <!-- Header -->
+    <%= render 'layouts/parcials/header' %>
+
+    <section class="section">
+      <fieldset style="border-radius: 8px; border: 2px solid blue; padding: 20px; background-color: white; height: auto;">
+        <legend style="text-align: center;">
+          <h3 style="color: blue; margin: 0;">ESTATISTICA SALAS/EDIFICIO</h3>
+        </legend>
+        <div class="container">
+          <div class="form-container">
+            
+
+
+          
+
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Estatísticas: Salas por Edifício</title>
+          
+            <!-- CSS -->
+            <style>
+              body {
+                background: #1b1b2b;
+                background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+                padding: 30px;
+                text-align: center;
+                font-family: 'Oswald', sans-serif;
+                font-size: 18px;
+                margin: 0;
+              }
+          
+              h1 {
+                color: blue;
+                font-weight: 300;
+              }
+          
+              table {
+                margin: 20px auto;
+                border-collapse: collapse;
+                width: 70%;
+                background-color: white;
+              }
+          
+              th, td {
+                border: 1px solid #ddd;
+                padding: 10px;
+                text-align: center;
+              }
+          
+              th {
+                background-color: #4CAF50;
+                color: white;
+              }
+          
+              tr:nth-child(even) {
+                background-color: #f2f2f2;
+              }
+          
+              tr:hover {
+                background-color: #ddd;
+              }
+          
+              .chart-container {
+                width: 70%;
+                margin: 30px auto;
+              }
+          
+              canvas {
+                max-width: 100%;
+                height: auto;
+              }
+            </style>
+          </head>
+          <body>
+          
+            <!-- Tabela -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Edifício</th>
+                  <th>Número de Salas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dados renderizados dinamicamente -->
+                <tr>
+                  <td>Edifício A</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>Edifício B</td>
+                  <td>15</td>
+                </tr>
+                <tr>
+                  <td>Edifício C</td>
+                  <td>8</td>
+                </tr>
+              </tbody>
+            </table>
+          
+            <!-- Gráfico -->
+            <div class="chart-container">
+              <canvas id="chartjs_bar"></canvas>
+            </div>
+          
+            <!-- JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              document.addEventListener('DOMContentLoaded', () => {
+                const ctx = document.getElementById('chartjs_bar').getContext('2d');
+          
+                // Dados para o gráfico
+                const labels = ['Edifício A', 'Edifício B', 'Edifício C'];
+                const data = [10, 15, 8];
+          
+                const myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: labels,
+                    datasets: [{
+                      label: 'Número de Salas',
+                      data: data,
+                      backgroundColor: ['#5969aa', '#ff407b', '#25d5f2']
+                    }]
+                  },
+                  options: {
+                    plugins: {
+                      legend: {
+                        display: true,
+                        position: 'top'
+                      }
+                    }
+                  }
+                });
+              });
+            </script>
+          
+          </body>
+          </html>
+          
+          
+
+
+
+
+
+
+
+
+          
+          </div>
+        </div>
+      </fieldset>
+    </section>
+
+  </div>
+</body>
+</html>

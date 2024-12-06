@@ -1,0 +1,2 @@
+module EventoSalasHelper
+end

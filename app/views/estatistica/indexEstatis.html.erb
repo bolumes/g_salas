@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPT Gestão de Salas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* Reset e Estilos Globais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+      font-family: 'Oswald', sans-serif;
+      color: #333;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Menu Lateral */
+    .sidebar {
+      width: 250px;
+      background-color: #4caf50;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border: 1px solid black;
+    }
+
+    .sidebar img.logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+
+    }
+
+    .sidebar nav ul li {
+      position: relative;
+    }
+
+    .sidebar nav a {
+      display: block;
+      width: 170px; /* Largura fixa para consistência */
+      padding: 10px 15px;
+      margin: 5px 0;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #388e3c;
+      text-align: center;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s;
+      border: 2px solid white;
+    }
+
+    .sidebar nav a:hover {
+      background-color: #2e7d32;
+      transform: scale(1.05);
+      border: 1px solid white;
+      background-color: #5f86b3;
+    }
+
+    /* Submenu escondido por padrão */
+    .sidebar nav ul li ul {
+      display: none; /* Esconde o submenu */
+      padding-left: 0; /* Remove recuo */
+    }
+
+    /* Mostrar o submenu ao passar o mouse */
+    .sidebar nav ul li:hover > ul {
+      display: block;
+    }
+
+    /* Estilo dos links do submenu */
+.sidebar nav ul li ul li a {
+  background-color: white; /* Cor de fundo diferente */
+  color: green; /* Contraste */
+  font-size: 0.95rem; /* Um pouco menor que o menu principal */
+  height: 30px;
+  padding: 8px 8px; /* Mesmo tamanho do menu principal */
+  margin: 5px 0; /* Espaçamento igual ao principal */
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave apenas nas cores */
+  height: 33px;
+}
+
+/* Efeito hover nos links do submenu */
+.sidebar nav ul li ul li a:hover {
+  background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+  color: darkgreen; /* Alterar cor ao passar o mouse */
+  border: 1px solid blue;
+}
+
+    .sidebar .icons {
+      margin-top: auto;
+      display: flex;
+      gap: 15px;
+    }
+
+    .sidebar .icons img {
+      width: 40px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar .icons img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    /* Conteúdo Principal */
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .main-content .header {
+      background-color: #4caf50;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+      margin-bottom: 20px;
+      border: 1px solid black;
+    }
+
+    .main-content .lmenu {
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: 1px solid black;
+    }
+
+      .main-content .lmenu img {
+      display: block;
+      margin: 20px auto;
+      width: 100%; /* Aumentando a largura para 90% do contêiner */
+      max-width: 1200px; /* Limita a largura máxima a 1200px */
+      height: 500px; /* Mantém a altura proporcional */
+      border-radius: 10px;
+      border: 3px solid #4caf50;
+      transition: border-color 0.3s ease, transform 0.3s;
+    }
+
+
+
+
+    .main-content .lmenu img:hover {
+      border-color: green;
+      transform: scale(1.02);
+    }
+
+    /* Rodapé */
+    /* Rodapé */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #4caf50;
+      color: white;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
+
+
+
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+
+      .sidebar img.logo {
+        width: 120px;
+      }
+
+      .sidebar nav a {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      .main-content {
+        margin-left: 200px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .sidebar {
+        width: 150px;
+      }
+
+      .sidebar img.logo {
+        width: 100px;
+      }
+
+      .sidebar nav a {
+        font-size: 0.8rem;
+        padding: 8px;
+      }
+
+      .main-content {
+        margin-left: 150px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu Lateral -->
+  <%= render 'layouts/parcials/sidebarr' %>
+  
+  <!-- Conteúdo Principal -->
+  <div class="main-content">
+    
+        <!-- Header -->
+        <%= render 'layouts/parcials/header' %>
+
+        <section class="lmenu">
+          <%= image_tag('sta1.jpg', alt: 'imagem-Estatis', title: 'imagem-Estatis') %>
+        </section>
+    
+    <!-- Footer -->
+    <%= render 'layouts/parcials/footer' %>
+    
+  </div>
+
+</body>
+</html>

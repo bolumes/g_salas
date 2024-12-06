@@ -1,0 +1,2 @@
+class Formacao < ApplicationRecord
+end

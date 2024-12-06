@@ -1,0 +1,61 @@
+<div class="sidebar">
+    <%= image_tag('ipt.jpeg', alt: 'Logo', class: 'logo') %>
+    <nav>
+    
+      <ul>
+        <li><a href="<%= home_path %>">Home</a></li>
+
+        <li>
+          <a href="#">Edificio</a>
+          <ul>
+            <li><a href="<%= edificios_path %>">Pesquisar</a></li>
+            <li><a href="<%= new_edificio_path %>">Criar</a></li>
+            <li><a href="<%= listEdificios_path %>">Listar</a></li>
+          </ul> 
+        </li>
+
+        <li>
+          <a href="#">Sala</a>
+          <ul>
+            <li><a href="#">Pesquisar</a></li>
+            <li><a href="#">Criar</a></li>
+            <li><a href="#">Listar</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">Formação</a>
+          <ul>
+            <li><a href="#">Pesquisar</a></li>
+            <li><a href="#">Criar</a></li>
+            <li><a href="#">Listar</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="">Docente</a>
+          <ul>
+            <li><a href="#">Pesquisar</a></li>
+            <li><a href="#">Criar</a></li>
+            <li><a href="#">Listar</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">Evento</a>
+          <ul>
+            <li><a href="#">Pesquisar</a></li>
+            <li><a href="#">Criar</a></li>
+            <li><a href="#">Listar</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div class="icons">
+      <a href="<%= logout_path %>"><%= image_tag('but2.jpg', alt: 'Logout') %></a>
+      <a href="<%= indexEstatis_path %>"><%= image_tag('set2.jpg', alt: 'Seeting') %></a>
+    </div>
+
+</div>

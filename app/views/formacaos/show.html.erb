@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @formacao %>
+
+<div>
+  <%= link_to "Edit this formacao", edit_formacao_path(@formacao) %> |
+  <%= link_to "Back to formacaos", formacaos_path %>
+
+  <%= button_to "Destroy this formacao", @formacao, method: :delete %>
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style type="text/css">
+      /* Estilos globais */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f5f5f5;
+        box-sizing: border-box;
+      }
+
+      .login {
+        display: inline-block;
+        text-align: center;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px; /* Tamanho máximo */
+      }
+
+      .login img {
+        width: 180px;
+        height: 100px;
+        margin-bottom: 20px;
+        border: 0.5px solid #ccc;
+        border-radius: 5px;
+        transition: transform 0.3s ease; /* Animação ao passar o mouse */
+      }
+
+      .login img:hover {
+        transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+      }
+
+      /* Estilo comum para todos os campos de entrada */
+      input {
+        display: block;
+        margin: 12px auto;
+        padding: 12px;
+        width: 80%; /* Define a largura dos inputs como 80% */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      input:focus {
+        border-color: #007bff;
+        outline: none; /* Remove o contorno padrão */
+      }
+
+      /* Botão de submit */
+      input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 12px;
+        transition: background-color 0.3s ease;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .shadow {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 14px;
+        color: #777;
+      }
+
+      .shadow a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .shadow a:hover {
+        color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="POST" action="">
+      <div class="login">
+        <!-- Logo IPT com borda sutil e efeito hover -->
+        <%= image_tag('ipt.jpg', alt: 'Logo IPT', style: 'width: 180px; height: 100px; border: 0.5px solid #ccc; margin-bottom: 20px;') %>
+
+        <!-- Campos de entrada -->
+        <input type="text" placeholder="Usuário" name="login" style="margin-right: 10px;" required />
+        <input type="password" placeholder="Senha" name="pwd" required />
+
+        <!-- Botão de submit -->
+        <input type="submit" value="CONECTAR" name="sign" />
+      </div>
+      <div class="shadow">
+        <!-- Link para recuperação de senha ou outras opções -->
+        <a href="#">Esqueceu a senha?</a>
+      </div>
+    </form>
+  </body>
+</html>

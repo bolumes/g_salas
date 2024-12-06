@@ -1,0 +1,42 @@
+<%= form_with(model: sala) do |form| %>
+  <% if sala.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sala.errors.count, "error") %> prohibited this sala from being saved:</h2>
+
+      <ul>
+        <% sala.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :capacidade, style: "display: block" %>
+    <%= form.text_field :capacidade %>
+  </div>
+
+  <div>
+    <%= form.label :projetor, style: "display: block" %>
+    <%= form.check_box :projetor %>
+  </div>
+
+  <div>
+    <%= form.label :dispo, style: "display: block" %>
+    <%= form.check_box :dispo %>
+  </div>
+
+  <div>
+    <%= form.label :edificio_id, style: "display: block" %>
+    <%= form.text_field :edificio_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
